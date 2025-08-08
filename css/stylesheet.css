@@ -522,7 +522,7 @@ nav > ul > li:hover > a {
 }
 /* PDF바로가기 */
 .spot_menu {
-position: absolute;
+     position: absolute;
   left: 50%;
   top: 65%;
   transform: translateX(-50%);
