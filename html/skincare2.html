@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>담연:사군자 스킨케어 갤러리</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #2a2a2a;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .back-btn {
+            background: #333;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            margin-bottom: 30px;
+        }
+
+        .back-btn:hover {
+            background: #ff5e00;
+            color: #fff;}
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .gallery-item {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            aspect-ratio: 4/3;
+        }
+
+        .item-content {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f8f8f8;
+            position: relative;
+        }
+
+        /* 이미지 플레이스홀더 - 실제 이미지로 교체 가능 */
+        .image-placeholder {
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: #999;
+        }
+
+        .image-placeholder > img {width: 100%; height: 100%; object-fit: cover;}
+
+        /* 모달 스타일 */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.9);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            max-width: 95%;
+            max-height: 95%;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .modal-image {
+            width: 100%;
+            height: auto;
+            max-height: 90vh;
+            object-fit: contain;
+            background: white;
+        }
+
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+            z-index: 1001;
+            background: rgba(0,0,0,0.5);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;}
+
+        .close:hover {
+            background: rgba(0,0,0,0.7);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* 반응형 디자인 */
+        @media (max-width: 768px) {
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            body {
+                padding: 15px;
+            }
+
+            .gallery-item {
+                aspect-ratio: 3/2;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="./skincare.html" onclick="history.back()" class="back-btn">← 돌아가기</a>
+        
+        <div class="gallery-grid">
+            <!-- 이미지 1 -->
+            <div class="gallery-item" onclick="openModal('../img/sub_img/sagunja_mocup.jpg')">
+                <div class="item-content">
+                    <div class="image-placeholder item-1"><img src="../img/sub_img/sagunja_mocup.jpg" alt="목업이미지1"></div>
+                </div>
+            </div>
+
+            <!-- 이미지 2 -->
+            <div class="gallery-item" onclick="openModal('../img/sub_img/4set.jpg')">
+                <div class="item-content">
+                    <div class="image-placeholder item-2"><img src="../img/sub_img/4set.jpg" alt="목업이미지2"></div>
+                </div>
+            </div>
+
+            <!-- 이미지 3 -->
+            <div class="gallery-item" onclick="openModal('../img/sub_img/mahwamocup.jpg')">
+                <div class="item-content">
+                    <div class="image-placeholder item-3"><img src="../img/sub_img/mahwamocup.jpg" alt="목업이미지3"></div>
+                </div>
+            </div>
+
+            <!-- 이미지 4 -->
+            <div class="gallery-item" onclick="openModal('../img/sub_img/nanmocup.jpg')">
+                <div class="item-content">
+                    <div class="image-placeholder item-4"><img src="../img/sub_img/nanmocup.jpg" alt="목업이미지4"></div>
+                </div>
+            </div>
+
+            <!-- 이미지 5 -->
+            <div class="gallery-item" onclick="openModal('../img/sub_img/daenamumocup.jpg')">
+                <div class="item-content">
+                    <div class="image-placeholder item-5"><img src="../img/sub_img/daenamumocup.jpg" alt="목업이미지5"></div>
+                </div>
+            </div>
+
+            <!-- 이미지 6 -->
+            <div class="gallery-item" onclick="openModal('../img/sub_img/mocup.jpg')">
+                <div class="item-content">
+                    <div class="image-placeholder item-6"><img src="../img/sub_img/mocup.jpg" alt="목업이미지6"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 모달 -->
+    <div id="imageModal" class="modal" onclick="closeModal()">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <img id="modalImage" src="" alt="" class="modal-image">
+        </div>
+    </div>
+
+    <script>
+        function openModal(imageSrc) {
+            const modalImage = document.getElementById('modalImage');
+            modalImage.src = imageSrc;
+            document.getElementById('imageModal').style.display = 'block';
+        }
+
+        function closeModal() {
+            document.getElementById('imageModal').style.display = 'none';
+        }
+
+        // ESC 키로 모달 닫기
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>

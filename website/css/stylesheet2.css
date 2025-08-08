@@ -1,0 +1,471 @@
+@charset "utf-8";
+/* 리셋 */
+*{margin: 0; padding: 0; box-sizing: border-box;}
+ul, li{list-style: none;}
+a{display: block; text-decoration: none; color: inherit;}
+body{font-family: 'Noto Sans KR', sans-serif; line-height: 1.6;}
+
+/* 폰트 */
+@font-face {
+    font-family: 'AritaBuriKR-Bold';
+    src: url('../font/AritaBuriKR-Medium.ttf') format('truetype');
+    font-style: normal;}
+
+
+/* 헤더상자 */
+.inner{max-width: 1600px; margin:0 auto; position: relative;}
+header{transition: all 0.3s ease; width: 100%; height: 115px; position: fixed;
+top: 0; left: 0; z-index: 999; background: rgba(255,255,255,0.9);}
+header>.inner {display: flex; justify-content: space-between; height: 78px; padding: 0 20px;}
+header>.inner>div{margin-top: 10px;}
+
+header.past-slider .toggle_select_language .language_text,
+header.past-slider .top.link ul li a,
+header.past-slider .gnb > li > a {
+    color: #000000;
+}
+
+header .toggle_select_language .language_text, 
+header .top.link ul li a, 
+header .top.link ul li a img,
+header .gnb > li > a {
+    color: #000;
+    transition: all 0.3s ease;
+    padding: 10px;
+}
+
+/* 상단부분 */
+.link ul{display: flex;}
+.link ul li{padding: 0 10px;}
+.link ul li a img{margin-top: -5px; width: 20px; height: 20px;}
+
+/* 로고 */
+.logo img{width: 166px; height: 40px; margin-top: 10px;}
+
+/* 다국어 */
+header>.inner>.select_language_wrap {
+    position: relative; 
+    display: inline-block;}
+
+header>.inner>.select_language_wrap>.toggle_select_language {
+    display: block;
+    padding: 5px 24px 5px 1px;
+    letter-spacing: -0.5px;
+    position: relative;
+    color: #333;
+    font-size: 14px;
+    cursor: pointer;}
+
+header>.inner>.select_language_wrap>.toggle_select_language::after {
+    content: '▼';
+    display: block;
+    width: 14px;
+    height: 22.5px;
+    position: absolute;
+    right: 0px; 
+    top: 50%;
+    transform: translateY(-50%) rotate(0deg);
+    font-size: 12px;}
+
+header>.inner> .select_language_wrap>.toggle_select_language.active::after {
+    transform: translateY(-50%) rotate(180deg);
+}
+
+.select_language_list {
+    position: absolute;
+    top: 36px;        
+    left: 0;            
+    z-index: 100;       
+    background-color: #fff;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    min-width: 180px;
+    display: none;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    font-size: 14px;
+}
+
+.select_language_list.show {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+}
+
+.select_language_list li a {
+    display: block;
+    padding: 8px 15px;
+    color: #333;  
+    white-space: nowrap;
+    transition: background-color 0.2s ease;
+}
+
+.select_language_list li a:hover {
+    background-color: #f0f0f0;
+}
+
+/* 메뉴 */
+nav{width: 772px; height: 100px; margin:0 auto;}
+.inner>nav>.gnb{display: flex; justify-content: space-around; align-items: center;}
+.inner>nav>.gnb>li{position: relative; text-align: center;}
+.inner>nav>.gnb>li a{display: block; padding:3px 15px; white-space: nowrap;
+                    border-bottom: 2px solid transparent;
+                    transition: all 0.3s ease; font-weight: 500;}
+.inner>nav>.gnb>li:hover>a{color: #000000; border-bottom: 2px solid #d4621a;}
+
+/* 서브메뉴 */
+.inner>nav>.gnb>li>.sub{padding: 10px 0; margin: 0; position: absolute; top: 100%; left: 50%;
+                        transform: translateX(-50%); min-width: 160px; z-index: 200;
+                        background: #fff; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+                        opacity: 0; visibility: hidden; transition: all 0.3s ease;}
+.inner>nav>.gnb>li:hover>.sub{opacity: 1; visibility: visible;}
+.inner>nav>.gnb>li>.sub>li>a{color: #333 !important; border: none !important; padding: 8px 20px;}
+.inner>nav>.gnb>li>.sub>li>a:hover{background-color: #f7f7f7; color: #d4621a !important; font-weight: bold;}
+
+/* 메인 배너 스타일 */
+.main-banner {
+    background: linear-gradient(135deg, #000 0%, #ff6b47 100%);
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    margin-top: 115px;
+}
+
+.product_image1 img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.banner-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1200px;
+    padding: 0 50px;
+}
+
+.banner-text {
+    flex: 1;
+    color: white;
+}
+
+.banner-text h1 {
+    font-size: 48px;
+    font-weight: 300;
+    margin-bottom: 20px;
+    line-height: 1.2;
+    font-family: 'AritaBuriKR-Bold', 'Noto Sans KR', sans-serif;
+}
+
+.banner-text p {
+    font-size: 18px;
+    opacity: 0.9;
+    line-height: 1.5;
+}
+
+.banner-products {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+}
+
+
+.product-name {
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.product-description {
+    font-size: 12px;
+    opacity: 0.8;
+}
+
+/* 네비게이션 메뉴 */
+.main-nav {
+    background-color: #fff;
+    padding: 0 50px;
+}
+
+.nav-menu {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 10px 0;
+    flex-wrap: wrap;
+}
+
+.nav-item {
+    display: block;
+    text-decoration: none;
+    color: #333;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 10px 15px;
+    border-bottom: 2px solid transparent;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.nav-item:hover,
+.nav-item.active {
+    color: #e74c3c;
+    border-bottom-color: #e74c3c;
+}
+
+/* 제품 그리드 */
+.products-section {
+    padding: 60px 50px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+    margin-bottom: 60px;
+}
+
+.product-card {
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+}
+
+.product-card-image {
+    width: 100%;
+    height: 200px;
+    background-color: #f8f8f8;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.product-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+
+.product-title {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+.product-subtitle {
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.product-price {
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* 베스트 제품 섹션 */
+.best-products {
+    background-color: #fafafa;
+    padding: 60px 50px;
+}
+
+.section-title {
+    font-size: 32px;
+    font-weight: 300;
+    text-align: center;
+    margin-bottom: 50px;
+    color: #333;
+}
+
+.best-products .products-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.best-products .product-card-image {
+    width: 100%;
+    height: 250px;
+    background-color: #fff;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.best-products .product-card_img {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.best-products .product-card_img img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    object-position: center;
+}
+
+/* 피부타입별 및 효과 섹션 */
+.skin-type-effects {
+    background-color: #ff8f6b;
+    padding: 60px 50px;
+    color: white;
+}
+
+.type-effects-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.skin-type-section, .effects-section {
+    text-align: center;
+}
+
+.section-label {
+    font-size: 24px;
+    font-weight: 300;
+    margin-bottom: 40px;
+    color: white;
+}
+
+.type-buttons, .effect-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.type-button, .effect-button {
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 25px;
+    padding: 15px 20px;
+    color: white;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.type-button:hover, .effect-button:hover {
+    background: rgba(255, 255, 255, 0.3);
+    border-color: rgba(255, 255, 255, 0.5);
+    transform: translateY(-2px);
+}
+
+/* 페이지네이션 */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: 40px 0;
+}
+
+.page-number {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: #666;
+    border: 1px solid #ddd;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.page-number:hover,
+.page-number.active {
+    background-color: #e74c3c;
+    color: white;
+    border-color: #e74c3c;
+}
+
+.page-arrow {
+    width: 40px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.page-arrow:hover {
+    background-color: #e74c3c;
+    color: white;
+}
+
+/* 반응형 */
+@media (max-width: 768px) {
+    .nav-menu {
+        gap: 20px;
+        padding: 15px 0;
+    }
+    
+    .nav-item {
+        font-size: 14px;
+        padding: 8px 10px;
+    }
+    
+    .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+    
+    .type-effects-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    
+    .type-buttons, .effect-buttons {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* 푸터 */
+footer{background: #333; color: #fff; padding: 60px 0 30px; margin-top: 100px;}
+.footer_content{max-width: 1400px; margin: 0 auto; padding: 0 20px;}
+.footer_grid{display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; margin-bottom: 40px;}
+.footer_section h4{margin-bottom: 20px; font-size: 18px;}
+.footer_section ul li{margin-bottom: 8px;}
+.footer_section ul li a{color: #ccc; transition: color 0.3s;}
+.footer_section ul li a:hover{color: #fff;}
+.footer_bottom{border-top: 1px solid #555; padding-top: 20px; text-align: center; color: #999;}

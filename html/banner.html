@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>포트폴리오 상세 - 배너&포스터</title>
+  <style>
+    @charset "utf-8";
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Arial', sans-serif;
+      background: #f8f9fa;
+      color: #333;
+      line-height: 1.6;
+    }
+    
+    /* 헤더 */
+    .header {
+      background: #000;
+      color: white;
+      padding: 20px 0;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      backdrop-filter: blur(10px);
+    }
+    
+    .header-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 40px;
+    }
+    
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+    }
+    
+    .back-btn {
+      background: #ff5e00;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+    }
+    
+    .back-btn:hover {
+      background: #e54e00;
+      transform: scale(1.05);
+    }
+    
+    /* 메인 컨텐츠 */
+    .main-content {
+      margin-top: 100px;
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 40px;
+    }
+    
+    /* 프로젝트 헤더 */
+    .project-header {
+      text-align: center;
+      margin-bottom: 60px;
+      padding: 40px 0;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 20px;
+      backdrop-filter: blur(10px);
+      border: 2px solid #33333377;
+    }
+    
+    .project-number {
+      font-size: 18px;
+      color: #666;
+      margin-bottom: 10px;
+    }
+    
+    .project-title {
+      font-size: 3rem;
+      font-weight: bold;
+      margin-bottom: 20px;
+      color: #333;
+    }
+    
+    .project-subtitle {
+      font-size: 1.2rem;
+      color: #666;
+      margin-bottom: 30px;
+    }
+    
+    .project-info {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 30px;
+      margin-top: 30px;
+    }
+    
+    .info-item {
+      text-align: center;
+    }
+    
+    .info-label {
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 5px;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    
+    .info-value {
+      color: #666;
+      font-size: 16px;
+    }
+    
+    /* 이미지 갤러리 */
+    .gallery-section {
+      margin-bottom: 60px;
+    }
+    
+    .section-title {
+      font-size: 2rem;
+      font-weight: bold;
+      margin-bottom: 40px;
+      text-align: center;
+      color: #333;
+      position: relative;
+    }
+    
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background: #ff5e00;
+    }
+    
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-bottom: 40px;
+    }
+    
+    .gallery-item {
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 15px;
+      overflow: hidden;
+      cursor: pointer;
+      border: 2px solid #33333377;
+    }
+    
+    
+    .gallery-item img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+    
+    .gallery-item:hover img {
+      transform: scale(1.05);
+    }
+    
+    .gallery-caption {
+      padding: 20px;
+      text-align: center;
+    }
+    
+    .caption-title {
+      font-weight: bold;
+      margin-bottom: 10px;
+      color: #333;
+    }
+    
+    .caption-desc {
+      color: #666;
+      font-size: 14px;
+    }
+    
+    /* 메인 피처 이미지 */
+    .feature-image {
+      grid-column: 1 / -1;
+      max-width: 800px;
+      margin: 0 auto 40px;
+    }
+    
+    .feature-image img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      border-radius: 15px;}
+    
+    /* 프로젝트 상세 설명 */
+    .project-details {
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 20px;
+      padding: 40px;
+      margin-bottom: 40px;}
+    
+    .detail-section {
+      margin-bottom: 30px;
+    }
+    
+    .detail-title {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-bottom: 15px;
+      color: #333;
+      border-bottom: 2px solid #ff5e00;
+      display: inline-block;
+      padding-bottom: 5px;
+    }
+    
+    .detail-content {
+      color: #666;
+      line-height: 1.8;
+      font-size: 16px;
+    }
+    
+    /* 하단 네비게이션 */
+    .bottom-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 60px;
+      padding: 30px 0;
+      border-top: 1px solid #eee;
+    }
+    
+    .nav-btn {
+      background: rgba(255, 255, 255, 0.9);
+      border: 2px solid #333;
+      padding: 15px 30px;
+      border-radius: 25px;
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+    }
+    
+    .nav-btn:hover {
+      background: #ff5e00;
+      color: white;
+      border-color: #ff5e00;
+      transform: translateY(-2px);
+    }
+    
+    .nav-btn.disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+    
+    /* 라이트박스 모달 */
+    .lightbox {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.9);
+      z-index: 2000;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .lightbox.active {
+      display: flex;
+    }
+    
+    .lightbox img {
+      max-width: 90%;
+      max-height: 90%;
+      object-fit: contain;
+    }
+    
+    .lightbox-close {
+      position: absolute;
+      top: 30px;
+      right: 30px;
+      color: white;
+      font-size: 30px;
+      cursor: pointer;
+      background: rgba(255, 255, 255, 0.2);
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.3s ease;
+    }
+    
+    .lightbox-close:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+    
+    /* 반응형 */
+    @media (max-width: 768px) {
+      .main-content {
+        padding: 20px;
+      }
+      
+      .project-title {
+        font-size: 2rem;
+      }
+      
+      .gallery-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      
+      .project-info {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      
+      .bottom-nav {
+        flex-direction: column;
+        gap: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- 헤더 -->
+  <header class="header">
+    <div class="header-content">
+      <div class="logo">Portfolio DetailPage</div>
+      <a href="../index.html" class="back-btn" onclick="history.back()">← 돌아가기</a>
+    </div>
+  </header>
+
+  <!-- 메인 컨텐츠 -->
+  <main class="main-content">
+    <!-- 프로젝트 헤더 -->
+    <section class="project-header">
+      <div class="project-number">#04</div>
+      <h1 class="project-title">포스터 & 배너</h1>
+      <p class="project-subtitle">포스터 & 배너 디자인</p>
+      
+      <div class="project-info">
+        <div class="info-item">
+          <div class="info-label">프로젝트 유형</div>
+          <div class="info-value">포스터 & 배너 디자인</div>
+        </div>
+        <div class="info-item">
+          <div class="info-label">제작 기간</div>
+          <div class="info-value">2주</div>
+        </div>
+        <div class="info-item">
+          <div class="info-label">사용 툴</div>
+          <div class="info-value">Photoshop</div>
+        </div>
+        <div class="info-item">
+          <div class="info-label">참여도</div>
+          <div class="info-value">100%</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 메인 이미지  -->
+    <section class="gallery-section">
+      <h2 class="section-title">작품 갤러리</h2>
+      
+      <div class="gallery-grid">
+        <!-- 갤러리 아이템들 -->
+        <div class="gallery-item">
+          <a href="./poster.html"><img src="../img/banner/postermocup.jpg" alt="상세 이미지 1"></a>
+          <div class="gallery-caption">
+            <div class="caption-title">포스터</div>
+            <div class="caption-desc">상세보기</div>
+          </div>
+        </div>
+        
+        <div class="gallery-item">
+          <a href="./banner_detail.html"><img src="../img/banner/bannermocup.jpg" alt="상세 이미지 2"></a>
+          <div class="gallery-caption">
+            <div class="caption-title">배너</div>
+            <div class="caption-desc">상세보기</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 프로젝트 상세 설명 -->
+    <section class="project-details">
+      <div class="detail-section">
+        <h3 class="detail-title">프로젝트 개요</h3>
+        <p class="detail-content">
+            포스터 - 운동화를 기획하던 중 
+                      “운동은 혼자보다 둘이 하면 더 즐겁지 않을까?”라는 발상에서 시작된 커플 아이템 제안 포스터입니다. <br>
+                      함께 걸으며 만들어가는 발자국처럼 “같이 하는 운동”의 따뜻함과 에너지를 시각화 했습니다. <br><br>
+            배너 - 4월 이벤트 마카롱을 주제로 기획한 배너입니다. <br>
+                  시각적인 효과를 통해 사용자의 시선을 사로잡고, 간결하면서도 명확함, <br>
+                  일관된 메시지 전달로 프로모션 참여를 유도하는데 중점을 두었습니다.
+        </p>
+      </div>
+      
+      <div class="detail-section">
+        <h3 class="detail-title">디자인 키워드</h3>
+        <p class="detail-content">
+          포스터 - #런닝화 #커플템 #운동화 <br>
+          배너 - #마카롱 #베이킹 #일관성
+          <br>
+        </p>
+      </div>
+      
+      <div class="detail-section">
+        <h3 class="detail-title">주요 특징</h3>
+        <p class="detail-content">
+          포스터
+          • '함께 달리는' 메시지를 중심으로, 에너지, 동기부여를 표현<br>
+          배너
+          • 마카롱의 색감을 극대화하여 시각적인 '달콤함'을 전달, 직관적이고 매력적인 비주얼로 참여 유도
+        </p>
+      </div>
+    </section>
+
+    <!-- 하단 네비게이션 -->
+    <nav class="bottom-nav">
+      <a href="./card.html" class="nav-btn">← 이전 프로젝트</a>
+      <a href="./mobile.html" class="nav-btn">다음 프로젝트 →</a>
+    </nav>
+  </main>
+
+  <script>
+    // 스크롤 애니메이션
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver(function(entries) {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+    
+    // 애니메이션 적용할 요소들
+    document.querySelectorAll('.gallery-item, .project-details').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(30px)';
+      el.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+      observer.observe(el);
+    });
+  </script>
+</body>
+</html>

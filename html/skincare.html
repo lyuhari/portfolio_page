@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>포트폴리오 상세 - 상세페이지</title>
+  <style>
+    @charset "utf-8";
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Arial', sans-serif;
+      background: #f8f9fa;
+      color: #333;
+      line-height: 1.6;
+    }
+    
+    /* 헤더 */
+    .header {
+      background: #000;
+      color: white;
+      padding: 20px 0;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      backdrop-filter: blur(10px);
+    }
+    
+    .header-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 40px;
+    }
+    
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+    }
+    
+    .back-btn {
+      background: #ff5e00;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+    }
+    
+    .back-btn:hover {
+      background: #e54e00;
+      transform: scale(1.05);
+    }
+    
+    /* 메인 컨텐츠 */
+    .main-content {
+      margin-top: 100px;
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 40px;
+    }
+    
+    /* 프로젝트 헤더 */
+    .project-header {
+      text-align: center;
+      margin-bottom: 60px;
+      padding: 40px 0;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 20px;
+      backdrop-filter: blur(10px);}
+    
+    .project-number {
+      font-size: 18px;
+      color: #666;
+      margin-bottom: 10px;
+    }
+    
+    .project-title {
+      font-size: 3rem;
+      font-weight: bold;
+      margin-bottom: 20px;
+      color: #333;
+    }
+    
+    .project-subtitle {
+      font-size: 1.2rem;
+      color: #666;
+      margin-bottom: 30px;
+    }
+    
+    .project-info {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 30px;
+      margin-top: 30px;
+    }
+    
+    .info-item {
+      text-align: center;
+    }
+    
+    .info-label {
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 5px;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    
+    .info-value {
+      color: #666;
+      font-size: 16px;
+    }
+    
+    /* 이미지 갤러리 */
+    .gallery-section {
+      margin-bottom: 60px;
+    }
+    
+    .section-title {
+      font-size: 2rem;
+      font-weight: bold;
+      margin-bottom: 40px;
+      text-align: center;
+      color: #333;
+      position: relative;
+    }
+    
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background: #ff5e00;
+    }
+    
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-bottom: 40px;
+    }
+    
+    .gallery-item {
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 15px;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+    
+    
+    .gallery-item img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+    
+    .gallery-item:hover img {
+      transform: scale(1.05);
+    }
+    
+    .gallery-caption {
+      padding: 20px;
+      text-align: center;
+    }
+    
+    .caption-title {
+      font-weight: bold;
+      margin-bottom: 10px;
+      color: #333;
+    }
+    
+    .caption-desc {
+      color: #666;
+      font-size: 14px;
+    }
+    
+    /* 메인 피처 이미지 */
+    .feature-image {
+      grid-column: 1 / -1;
+      max-width: 800px;
+      margin: 0 auto 40px;
+    }
+    
+    .feature-image img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      border-radius: 15px;}
+    
+    /* 프로젝트 상세 설명 */
+    .project-details {
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 20px;
+      padding: 40px;
+      margin-bottom: 40px;}
+    
+    .detail-section {
+      margin-bottom: 30px;
+    }
+    
+    .detail-title {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-bottom: 15px;
+      color: #333;
+      border-bottom: 2px solid #ff5e00;
+      display: inline-block;
+      padding-bottom: 5px;
+    }
+    
+    .detail-content {
+      color: #666;
+      line-height: 1.8;
+      font-size: 16px;
+    }
+    
+    /* 하단 네비게이션 */
+    .bottom-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 60px;
+      padding: 30px 0;
+      border-top: 1px solid #eee;
+    }
+    
+    .nav-btn {
+      background: rgba(255, 255, 255, 0.9);
+      border: 2px solid #333;
+      padding: 15px 30px;
+      border-radius: 25px;
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+    }
+    
+    .nav-btn:hover {
+      background: #ff5e00;
+      color: white;
+      border-color: #ff5e00;
+      transform: translateY(-2px);
+    }
+    
+    .nav-btn.disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+    
+    /* 라이트박스 모달 */
+    .lightbox {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.9);
+      z-index: 2000;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .lightbox.active {
+      display: flex;
+    }
+    
+    .lightbox img {
+      max-width: 90%;
+      max-height: 90%;
+      object-fit: contain;
+    }
+    
+    .lightbox-close {
+      position: absolute;
+      top: 30px;
+      right: 30px;
+      color: white;
+      font-size: 30px;
+      cursor: pointer;
+      background: rgba(255, 255, 255, 0.2);
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.3s ease;
+    }
+    
+    .lightbox-close:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+    
+    /* 반응형 */
+    @media (max-width: 768px) {
+      .main-content {
+        padding: 20px;
+      }
+      
+      .project-title {
+        font-size: 2rem;
+      }
+      
+      .gallery-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      
+      .project-info {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      
+      .bottom-nav {
+        flex-direction: column;
+        gap: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- 헤더 -->
+  <header class="header">
+    <div class="header-content">
+      <div class="logo">Portfolio DetailPage</div>
+      <a href="../index.html" class="back-btn" onclick="history.back()">← 돌아가기</a>
+    </div>
+  </header>
+
+  <!-- 메인 컨텐츠 -->
+  <main class="main-content">
+    <!-- 프로젝트 헤더 -->
+    <section class="project-header">
+      <div class="project-number">#01 - 1</div>
+      <h1 class="project-title">상세페이지</h1>
+      <p class="project-subtitle">사군자 스킨케어 </p>
+      
+      <div class="project-info">
+        <div class="info-item">
+          <div class="info-label">프로젝트 유형</div>
+          <div class="info-value">상세페이지 디자인</div>
+        </div>
+        <div class="info-item">
+          <div class="info-label">제작 기간</div>
+          <div class="info-value">3주</div>
+        </div>
+        <div class="info-item">
+          <div class="info-label">사용 툴</div>
+          <div class="info-value">Photoshop</div>
+        </div>
+        <div class="info-item">
+          <div class="info-label">참여도</div>
+          <div class="info-value">100%</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 메인 이미지  -->
+    <section class="gallery-section">
+      <h2 class="section-title">작품 갤러리</h2>
+      
+      <div class="gallery-grid">
+    
+        
+        <!-- 갤러리 아이템들 -->
+        <div class="gallery-item">
+          <a href="./skincare2.html"><img src="../img/sub_img/sagunja_mocup.jpg" alt="상세 이미지 1"></a>
+          <div class="gallery-caption">
+            <div class="caption-title">담연:사군자 스킨케어</div>
+            <div class="caption-desc">목업이미지</div>
+          </div>
+        </div>
+        
+        <div class="gallery-item">
+          <a href="./sagunja_detail.html"><img src="../img/sub_img/maehw_detail.jpg" alt="상세 이미지 2"></a>
+          <div class="gallery-caption">
+            <div class="caption-title">담연:사군자 스킨케어</div>
+            <div class="caption-desc">사군자 스킨케어 상세페이지</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 프로젝트 상세 설명 -->
+    <section class="project-details">
+      <div class="detail-section">
+        <h3 class="detail-title">프로젝트 개요</h3>
+        <p class="detail-content">
+          한국의 미와 전통 사군자의 상징성을 현대적인 코스메틱 디자인에 담았습니다.<br>
+          ‘담연(淡然)’은 바쁜 일상 속 피부 본연의 건강함과 균형을 회복시키는 가상 브랜드입니다.
+          자연에서 온 진정성과 깊이를 시각적으로 표현하고자 했습니다.
+        </p>
+      </div>
+      
+      <div class="detail-section">
+        <h3 class="detail-title">디자인 컨셉</h3>
+        <p class="detail-content">
+          <strong>"피부에 사군자의 기품을 담다, 담연(淡然)"</strong><br>
+          사군자(매화, 난초, 국화, 대나무)의 고유한 의미를 
+          제품 효능과 연결해 피부에 자연의 생명력과 균형을 전합니다.
+          절제된 미니멀리즘과 여백의 미로, 전통과 현대의 조화를 담았습니다.<br>
+        </p>
+      </div>
+      
+      <div class="detail-section">
+        <h3 class="detail-title">주요 특징</h3>
+        <p class="detail-content">
+          • 사군자(죽, 국, 매, 난) 테마로 자연의 미학과 동양적 의미를 담은 스킨케어 라인.<br>
+          • 각 제품은 대나무·국화·매화·난초 추출물을 활용해 피부 고민별(진정, 영양, 생기, 수분) 맞춤 케어 제공. <br>
+          • 색상·패키지·카피까지 일관된 한방+모던 무드 브랜딩으로 브랜드 정체성 강화. <br>
+        </p>
+      </div>
+    </section>
+
+    <!-- 하단 네비게이션 -->
+    <nav class="bottom-nav">
+      <a href="./daiso_detail.html" class="nav-btn">← 이전 프로젝트</a>
+      <a href="./eventpage.html" class="nav-btn">다음 프로젝트 →</a>
+    </nav>
+  </main>
+
+  <script>
+    // 스크롤 애니메이션
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver(function(entries) {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+    
+    // 애니메이션 적용할 요소들
+    document.querySelectorAll('.gallery-item, .project-details').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(30px)';
+      el.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+      observer.observe(el);
+    });
+  </script>
+</body>
+</html>
