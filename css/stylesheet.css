@@ -522,9 +522,9 @@ nav > ul > li:hover > a {
 }
 /* PDF바로가기 */
 .spot_menu {
-     position: absolute;
+  position: absolute;
   left: 50%;
-  top: 65%;
+  bottom: 30px;
   transform: translateX(-50%);
   background: #ff5e00;
   color: white;
@@ -696,6 +696,7 @@ nav > ul > li:hover > a {
     width: 70px;
     height: 70px;
     font-size: 12px;
+    bottom: 20px;
   }
 }
 
@@ -860,6 +861,7 @@ nav > ul > li:hover > a {
     width: 60px;
     height: 60px;
     font-size: 10px;
+    bottom: 15px;
   }
 }
 /* 여기까지 수정했는데 */
